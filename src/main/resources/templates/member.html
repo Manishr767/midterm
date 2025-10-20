@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+</head>
+<div th:replace="~{fragments/header :: site-header}"></div>
+<body>
+<h1 class="mb-4">All Members</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Age</th>
+        <th>Role</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${members}">
+        <td th:text="${member.email}"></td>
+        <td th:text="${member.pwd}"></td>
+        <td th:text="${member.age}"></td>
+        <td th:text="${member.role}"></td>
+        <td>
+            <a th:href="@{/delete/{id}(id=${member.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+<div th:replace="~{fragments/footer :: site-footer}"></div>
+</html>
