@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.management.relation.Relation;
 import java.util.List;
 
 @Controller
@@ -38,6 +39,8 @@ public class MemberController {
     public String regist(MemberDTO memberDTO){
         System.out.println("email :"+memberDTO.getEmail());
         System.out.println("password :"+memberDTO.getPwd());
+
+        memberDTO.setRole("USER");
         memberService.registNewMember(memberDTO);
         return  "index";
 
